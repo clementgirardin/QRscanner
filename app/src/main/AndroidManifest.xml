@@ -29,12 +29,12 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AlzaSyCI-4RaDocwneRsw2ryTRPMf7NzGV-FlCE" />
 
         <activity
             android:name=".googleMapActivity"
-            android:exported="false"
-            android:label="@string/title_activity_google_map" />
+            android:label="@string/title_activity_google_map">
+        </activity>
         <activity
             android:name=".ScanCodeQrActivity"
             android:exported="false" />

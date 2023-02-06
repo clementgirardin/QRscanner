@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ScanCodeQrActivity.class));
+                startActivity(new Intent(getApplicationContext(),googleMapActivity.class));
             }
         });
     }
