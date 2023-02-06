@@ -1,16 +1,11 @@
 package com.example.scanner;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import com.google.zxing.Result;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
-
-
     ZXingScannerView scannerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +18,8 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
 
     @Override
     public void handleResult(Result result) {
-
+        MainActivity.txt_resultat.setText(result.getText());
+        onBackPressed();
     }
 
     @Override
