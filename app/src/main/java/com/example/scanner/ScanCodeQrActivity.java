@@ -1,8 +1,11 @@
 package com.example.scanner;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.zxing.Result;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
@@ -16,24 +19,24 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         setContentView(scannerView);
     }
 
+    /**
+     * SET le text renvoyé par le scan du code QR
+     * @param result
+     */
     @Override
     public void handleResult(Result result) {
         MainActivity.txt_resultat.setText(result.getText());
+        // Retour à la page d'accueil après le scan pour visualiser le résultat
         onBackPressed();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        scannerView.stopCamera();
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        // Définit l'appel de la fonction handleResult à chaque scan du scanneur
         scannerView.setResultHandler(this);
+        // Démarre la caméra
         scannerView.startCamera();
     }
 }
