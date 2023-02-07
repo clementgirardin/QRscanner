@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Scanner</string>
     <string name="title_activity_google_map">googleMapActivity</string>
-    <string name="mapbox_access_token">pk.eyJ1IjoiamVhbnZpbmNlbnQyMDAzIiwiYSI6ImNsZHN3NWFnczAxY3Qzd3FzOGxybGpvbnUifQ.vqcc1u166DUmpUEWXKLSSw</string>
+    <string name="MAP_ACCESS" >AIzaSyD4KfDcLVjVPatpIKtrPXot024Z4UHVZQ8</string>
     <string name="title_activity_map_box">MapBox</string>
     <!-- Strings used for fragments for navigation -->
 </resources>
