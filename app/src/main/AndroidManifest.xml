@@ -17,9 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scanner"
         tools:targetApi="31">
-        <activity
-            android:name=".OpenStreetMap"
-            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
