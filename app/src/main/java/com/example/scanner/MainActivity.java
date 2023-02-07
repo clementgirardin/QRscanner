@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mapbox.maps.MapboxMap;
+import com.mapbox.maps.plugin.Plugin;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         // Récupération par id
         btn_scan = (Button) findViewById(R.id.btn_scan);
         txt_resultat = (TextView) findViewById(R.id.txt_resultat);
-
+        Plugin.Mapbox.getInstance(this, );
+        mapView = (MapView) findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
 
         // Lance l'activité scan_code_qr au clique du bouton
         btn_scan.setOnClickListener(new View.OnClickListener() {
