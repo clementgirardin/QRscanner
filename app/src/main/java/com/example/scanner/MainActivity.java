@@ -32,11 +32,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        showMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
-            }
-        });
+        // Test clique du bouton pour afficher la map
+//        showMap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+//            }
+//        });
     }
 }
