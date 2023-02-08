@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         // Récupération par id
         btn_scan = (Button) findViewById(R.id.btn_scan);
         txt_resultat = (TextView) findViewById(R.id.txt_resultat);
-        showMap  = (Button) findViewById(R.id.btn_map);
 
         // Lance l'activité scan_code_qr au clique du bouton
         btn_scan.setOnClickListener(new View.OnClickListener() {

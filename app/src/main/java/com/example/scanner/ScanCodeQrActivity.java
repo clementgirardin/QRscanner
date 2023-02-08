@@ -1,5 +1,6 @@
 package com.example.scanner;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,9 +26,14 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
      */
     @Override
     public void handleResult(Result result) {
-        MainActivity.txt_resultat.setText(result.getText());
-        // Retour à la page d'accueil après le scan pour visualiser le résultat
-        onBackPressed();
+//        MainActivity.txt_resultat.setText(result.getText());
+//        // Retour à la page d'accueil après le scan pour visualiser le résultat
+//        onBackPressed();
+
+        // Affichage de la map
+        String localisation = result.getText();
+        startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+
     }
 
 
