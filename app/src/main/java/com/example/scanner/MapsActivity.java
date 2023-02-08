@@ -24,9 +24,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        // Obtenez le SupportMapFragment et soyez averti lorsque la carte est prête à être utilisée.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        // Ajout d'info_fragment à l'activitée
+        getSupportFragmentManager().beginTransaction().add(R.id.info_fragment, new InfoFragment()).commit();
         mapFragment.getMapAsync(this);
 
     }
@@ -52,7 +54,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double latitude = getIntent().getDoubleExtra("latitude", 0);
         double longitude = getIntent().getDoubleExtra("longitude", 0);
 
-        // Ajout d'un marker avec les coordpnées fournies
+        // Ajout d'un marker avec les coordonées fournies
         LatLng coordonees = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(coordonees).title(latitude + " , " + longitude));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(coordonees));
