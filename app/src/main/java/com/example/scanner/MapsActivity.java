@@ -43,13 +43,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        // Test valeurs fixe
+//        double latitude = 47.98;
+//        double longitude = 79.012;
+
+        // Récupère les paramètres fournis
         double latitude = getIntent().getDoubleExtra("latitude", 0);
         double longitude = getIntent().getDoubleExtra("longitude", 0);
 
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Ajout d'un marker avec les coordpnées fournies
+        LatLng coordonees = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(coordonees).title(latitude + " , " + longitude));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(coordonees));
     }
 }
