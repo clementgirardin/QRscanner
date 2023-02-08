@@ -16,6 +16,7 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_code_qr);
 
+        // Initialisation du scanner
         scannerView = new ZXingScannerView(this);
         setContentView(scannerView);
     }
@@ -31,8 +32,18 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
 //        onBackPressed();
 
         // Affichage de la map
-        String localisation = result.getText();
-        startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+        // Sépare la latitude de la longitude retournés par le code QR
+        String[] localisation = result.getText().split(",");
+
+        // Initialisation latitude & longitude
+        double latitude = Double.parseDouble(localisation[0]);
+        double longitude = Double.parseDouble(localisation[1]);
+
+        // Cr
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        intent.putExtra("latitude", latitude);
+        intent.putExtra("longitude", longitude);
+        startActivity(intent);
 
     }
 
