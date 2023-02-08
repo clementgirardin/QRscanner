@@ -7,19 +7,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.mapbox.maps.MapboxMap;
+import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_scan;
     public static TextView txt_resultat;
 
-    MapboxMap mapboxMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialisation fragment
+        Fragment fragment = new MapFragment();
+
+        // Ouverture fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
         // Récupération par id
         btn_scan = (Button) findViewById(R.id.btn_scan);
         txt_resultat = (TextView) findViewById(R.id.txt_resultat);
