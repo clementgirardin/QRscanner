@@ -28,6 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     /**
@@ -55,5 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng coordonees = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(coordonees).title(latitude + " , " + longitude));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(coordonees));
+        // Zoom sur le marker
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordonees, 15));
     }
 }
