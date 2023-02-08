@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_scan;
+    Button showMap;
     public static TextView txt_resultat;
 
     @Override
@@ -19,21 +19,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialisation fragment
-        Fragment fragment = new MapFragment();
-
-        // Ouverture fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
-
         // Récupération par id
         btn_scan = (Button) findViewById(R.id.btn_scan);
         txt_resultat = (TextView) findViewById(R.id.txt_resultat);
+        showMap  = (Button) findViewById(R.id.btn_map);
 
         // Lance l'activité scan_code_qr au clique du bouton
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),ScanCodeQrActivity.class));
+            }
+        });
+
+        showMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
             }
         });
     }
