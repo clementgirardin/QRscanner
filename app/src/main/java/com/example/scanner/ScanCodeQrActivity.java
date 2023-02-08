@@ -35,10 +35,12 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         // Affichage de la map
         // Récupération données code QR
         String resultQRcode = result.getText();
+        // Affichage données récupérées dans la textView
+        MainActivity.txt_resultat.setText(resultQRcode);
 
         // Vérifie si la chaîne commence par "geo:"
         if (resultQRcode.startsWith("geo:")) {
-            // Extrait la sous-chaîne à partir de la 5ème position (après "geo:")
+            // Extrait la chaîne de caractère "geo:" renvoyée par le code QR
             resultQRcode = resultQRcode.substring(4);
         }
 
