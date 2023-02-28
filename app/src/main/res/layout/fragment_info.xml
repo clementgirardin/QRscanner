@@ -11,7 +11,8 @@
         android:id="@+id/localisation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Localisation"
+        android:textStyle="bold"
+        android:text="Localisation : "
         android:textSize="20sp" />
 
     <LinearLayout
@@ -24,15 +25,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Entrer un N° de téléphone" />
-
-        <Button
-            android:id="@+id/btn_envoie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Envoyer"
-            android:backgroundTint="@color/black"/>
+            android:hint="N° de téléphone" />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_envoie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Envoyer"
+        android:backgroundTint="@color/black"/>
 
 </LinearLayout>

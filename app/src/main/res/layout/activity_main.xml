@@ -16,16 +16,6 @@
         android:backgroundTint="@color/black"
         />
 
-<!-- Bouton pour tester la map -->
-<!--    <Button-->
-<!--        android:id="@+id/btn_map"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Show map"-->
-<!--        android:textSize="20sp"-->
-<!--        android:backgroundTint="@color/black"-->
-<!--        />-->
-
     <TextView
         android:id="@+id/txt_resultat"
         android:layout_width="match_parent"

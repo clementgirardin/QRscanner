@@ -29,7 +29,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         // Ajout d'info_fragment à l'activitée
-        getSupportFragmentManager().beginTransaction().add(R.id.info_fragment, new InfoFragment()).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.info_fragment, new InfoFragment()).commit();
     }
 
     /**

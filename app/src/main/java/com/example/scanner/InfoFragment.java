@@ -29,6 +29,9 @@ public class InfoFragment extends Fragment {
         btn_envoie = view.findViewById(R.id.btn_envoie);
 
 
+        localisation.setText("Localisation : " + 12);
+
+
         return view;
     }
 }
