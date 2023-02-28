@@ -15,12 +15,4 @@
         android:layout_height="500sp"
         tools:context=".MapsActivity" />
 
-    <!-- Fragment information -->
-    <fragment
-        android:id="@+id/info_fragment"
-        android:name="com.example.scanner.InfoFragment"
-        android:layout_width="match_parent"
-        android:layout_height="230sp"
-        android:layout_weight="1" />
-
 </LinearLayout>

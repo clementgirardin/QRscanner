@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -47,10 +48,21 @@ public class InfoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String numTel = telephone.getText().toString();
-                String message = "Localisation" + latitude + longitude;
+                String message = "Localisation: " + latitude + longitude;
+
+                // Supprime les espaces du numéro de tel si il y en a
+                numTel = numTel.replaceAll("\\s+", "");
+                // Vérifie si le numéro de téléphone est valide
+                if (!numTel.matches("^\\+?[0-9]{10,13}$")) {
+                    Toast.makeText(getActivity(), "Numéro de téléphone invalide", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(numTel, null, message, null, null);
+
+                // Validation envoie du message
+                Toast.makeText(getActivity(), "Message envoyé à " + numTel, Toast.LENGTH_SHORT).show();
             }
         });
 
