@@ -12,13 +12,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // Test clique du bouton pour afficher la map
-//        showMap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
-//            }
-//        });
+        // Création d'une instance d'infoFragment
+        mainFragment fragmentMain = new mainFragment();
+        // Remplace activity main par le fragment map
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMain).commit();
     }
 }

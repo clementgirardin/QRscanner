@@ -35,7 +35,7 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         // Récupération données code QR
         String resultQRcode = result.getText();
         // Affichage données récupérées dans la textView
-        MainActivity.txt_resultat.setText(resultQRcode);
+        mainFragment.txt_resultat.setText(resultQRcode);
 
         // Vérifie si la chaîne commence par "geo:"
         if (resultQRcode.startsWith("geo:")) {
@@ -61,9 +61,8 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         // Passe le bundle en tant qu'argument
         fragmentInfos.setArguments(bundleInfos);
 
-
         // Création d'une instance d'infoFragment
-        InfoFragment fragmentMap = new InfoFragment();
+        MapsFragment fragmentMap = new MapsFragment();
         // Création d'un objet bundle pour y stocker les coordonées
         Bundle bundleLoca = new Bundle();
         bundleLoca.putDouble("latitude", latitude);
@@ -72,9 +71,9 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         fragmentMap.setArguments(bundleLoca);
 
         // Remplace activity main par le fragment map
-        getSupportFragmentManager().beginTransaction().replace(R.id.main, fragmentMap).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMap).commit();
         // ajout du fragment infos après la map
-        getSupportFragmentManager().beginTransaction().add(R.id.main, fragmentInfos).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentInfos).commit();
 
 
         // Start l'activité et fournis la latitude et longitude en paramètre
