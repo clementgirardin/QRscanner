@@ -1,5 +1,6 @@
 package com.example.scanner;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,37 +51,11 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         double latitude = Double.parseDouble(localisation[0]);
         double longitude = Double.parseDouble(localisation[1]);
 
-
-        // Envoie des coordonnées pour infos fragment
-        // Création d'une instance d'infoFragment
-        InfoFragment fragmentInfos = new InfoFragment();
-        // Création d'un objet bundle pour y stocker les coordonées
-        Bundle bundleInfos = new Bundle();
-        bundleInfos.putDouble("latitude", latitude);
-        bundleInfos.putDouble("longitude", longitude);
-        // Passe le bundle en tant qu'argument
-        fragmentInfos.setArguments(bundleInfos);
-
-        // Création d'une instance d'infoFragment
-        MapsFragment fragmentMap = new MapsFragment();
-        // Création d'un objet bundle pour y stocker les coordonées
-        Bundle bundleLoca = new Bundle();
-        bundleLoca.putDouble("latitude", latitude);
-        bundleLoca.putDouble("longitude", longitude);
-        // Passe le bundle en tant qu'argument
-        fragmentMap.setArguments(bundleLoca);
-
-        // Remplace activity main par le fragment map
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMap).commit();
-        // ajout du fragment infos après la map
-        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentInfos).commit();
-
-
         // Start l'activité et fournis la latitude et longitude en paramètre
-//        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-//        intent.putExtra("latitude", latitude);
-//        intent.putExtra("longitude", longitude);
-//        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), resultScanActivity.class);
+        intent.putExtra("latitude", latitude);
+        intent.putExtra("longitude", longitude);
+        startActivity(intent);
     }
 
 
@@ -91,5 +66,12 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         scannerView.setResultHandler(this);
         // Démarre la caméra
         scannerView.startCamera();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Arrête la caméra
+        scannerView.stopCamera();
     }
 }
