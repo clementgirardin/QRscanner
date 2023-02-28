@@ -50,15 +50,25 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
         // Récupération latitude & longitude après la séparation des valeurs
         double latitude = Double.parseDouble(localisation[0]);
         double longitude = Double.parseDouble(localisation[1]);
-//        // Test la récupération des résultats
-//        MainActivity.txt_resultat.setText( "" + longitude);
-//        onBackPressed();
+
+
+        // Envoie des coordonnées pour infos fragment
+        // Création d'un objet bundle pour y stocker les coordonées
+        Bundle bundleInfos = new Bundle();
+        bundleInfos.putDouble("latitude", latitude);
+        bundleInfos.putDouble("longitude", longitude);
+        // Création d'une instance d'infoFragment
+        InfoFragment fragmentInfos = new InfoFragment();
+        // Passe le bundle en tant qu'argument
+        fragmentInfos.setArguments(bundleInfos);
+
 
         // Start l'activité et fournis la latitude et longitude en paramètre
         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
         intent.putExtra("latitude", latitude);
         intent.putExtra("longitude", longitude);
         startActivity(intent);
+
 
     }
 

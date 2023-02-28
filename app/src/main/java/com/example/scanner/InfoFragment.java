@@ -1,6 +1,7 @@
 package com.example.scanner;
 
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,9 @@ public class InfoFragment extends Fragment {
     TextView localisation;
     Button btn_envoie;
 
+    // initialisation des variables de coordonnées
+    double latitude = 0;
+    double longitude = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,8 +32,30 @@ public class InfoFragment extends Fragment {
         localisation = view.findViewById(R.id.localisation);
         btn_envoie = view.findViewById(R.id.btn_envoie);
 
+        // Récupération des arguments passés en paramètre à la création de l'instance d'infosfragment
+        Bundle bundleInfos = getArguments();
 
-        localisation.setText("Localisation : " + 12);
+        if (bundleInfos != null){
+            // Récupération des valeurs si arguments n'est pas null
+            latitude = bundleInfos.getDouble("latitude");
+            longitude = bundleInfos.getDouble("longitude");
+        }
+
+
+        // Lance l'activité scan_code_qr au clique du bouton
+        btn_envoie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String numTel = telephone.getText().toString();
+                String message = "Localisation" + latitude + longitude;
+
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(numTel, null, message, null, null);
+            }
+        });
+
+        // set un nouveau text a localisation avec les coordonées
+        localisation.setText("Localisation : " + latitude + ", " + longitude);
 
 
         return view;

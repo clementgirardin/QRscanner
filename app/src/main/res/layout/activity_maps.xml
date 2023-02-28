@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <!-- Fragment map -->
-    <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
@@ -16,7 +16,7 @@
         tools:context=".MapsActivity" />
 
     <!-- Fragment information -->
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/info_fragment"
         android:name="com.example.scanner.InfoFragment"
         android:layout_width="match_parent"
