@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.scanner.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,6 +18,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
+
+    private GoogleMap mMap;
+    private ActivityMapsBinding binding;
+    double latitude;
+    double longitude;
+
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -31,17 +38,29 @@ public class MapsFragment extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            mMap = googleMap;
+
+            // Test valeurs fixe
+//        double latitude = 47.98;
+//        double longitude = 79.012;
+
+            // Récupère les paramètres fournis
+            assert getArguments() != null;
+            double latitude = getArguments().getDouble("latitude", 0);
+            double longitude = getArguments().getDouble("longitude", 0);
+
+            // Ajout d'un marker avec les coordonées fournies
+            LatLng coordonees = new LatLng(latitude, longitude);
+            mMap.addMarker(new MarkerOptions().position(coordonees).title(latitude + " , " + longitude));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(coordonees));
+            // Zoom sur le marker
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordonees, 15));
         }
     };
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
 

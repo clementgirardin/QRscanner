@@ -5,26 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/main"
     tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Scanner un code QR"
-        android:textSize="20sp"
-        android:backgroundTint="@color/black"
-        />
-
-    <TextView
-        android:id="@+id/txt_resultat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Résultat"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="18dp"
-        />
-
 
 </LinearLayout>

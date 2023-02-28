@@ -1,6 +1,5 @@
 package com.example.scanner;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,23 +52,36 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
 
 
         // Envoie des coordonnées pour infos fragment
+        // Création d'une instance d'infoFragment
+        InfoFragment fragmentInfos = new InfoFragment();
         // Création d'un objet bundle pour y stocker les coordonées
         Bundle bundleInfos = new Bundle();
         bundleInfos.putDouble("latitude", latitude);
         bundleInfos.putDouble("longitude", longitude);
-        // Création d'une instance d'infoFragment
-        InfoFragment fragmentInfos = new InfoFragment();
         // Passe le bundle en tant qu'argument
         fragmentInfos.setArguments(bundleInfos);
 
 
+        // Création d'une instance d'infoFragment
+        InfoFragment fragmentMap = new InfoFragment();
+        // Création d'un objet bundle pour y stocker les coordonées
+        Bundle bundleLoca = new Bundle();
+        bundleLoca.putDouble("latitude", latitude);
+        bundleLoca.putDouble("longitude", longitude);
+        // Passe le bundle en tant qu'argument
+        fragmentMap.setArguments(bundleLoca);
+
+        // Remplace activity main par le fragment map
+        getSupportFragmentManager().beginTransaction().replace(R.id.main, fragmentMap).commit();
+        // ajout du fragment infos après la map
+        getSupportFragmentManager().beginTransaction().add(R.id.main, fragmentInfos).commit();
+
+
         // Start l'activité et fournis la latitude et longitude en paramètre
-        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-        intent.putExtra("latitude", latitude);
-        intent.putExtra("longitude", longitude);
-        startActivity(intent);
-
-
+//        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+//        intent.putExtra("latitude", latitude);
+//        intent.putExtra("longitude", longitude);
+//        startActivity(intent);
     }
 
 
