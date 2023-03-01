@@ -28,14 +28,14 @@ public class resultScanActivity extends AppCompatActivity {
 
         // Envoie des coordonnées pour infos fragment
         // Création d'une instance d'infoFragment
-        InfoFragment fragmentInfos = new InfoFragment();
+//        InfoFragment fragmentInfos = new InfoFragment();
         // Création d'un objet bundle pour y stocker les coordonées
-        Bundle bundleInfos = new Bundle();
-        bundleInfos.putDouble("latitude", latitude);
-        bundleInfos.putDouble("longitude", longitude);
-        // Passe le bundle en tant qu'argument
-        fragmentInfos.setArguments(bundleInfos);
+//        Bundle bundleInfos = new Bundle();
+//        bundleInfos.putDouble("latitude", latitude);
+//        bundleInfos.putDouble("longitude", longitude);
+//        // Passe le bundle en tant qu'argument
+//        fragmentInfos.setArguments(bundleInfos);
         // ajout du fragment infos après la map
-        getSupportFragmentManager().beginTransaction().add(R.id.resultScan, fragmentInfos).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.resultScan, fragmentInfos).commit();
     }
 }
