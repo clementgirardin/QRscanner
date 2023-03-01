@@ -1,6 +1,7 @@
 package com.example.scanner;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,7 @@ public class resultScanActivity extends AppCompatActivity {
         // Récupération des coordonnées envoyées par l'Intent
         double latitude = getIntent().getDoubleExtra("latitude", 0.0);
         double longitude = getIntent().getDoubleExtra("longitude", 0.0);
+
 
         //----------------------------------Séparation partie du code----------------------------------------\\
         // Création d'une instance d'infoFragment
@@ -34,13 +36,8 @@ public class resultScanActivity extends AppCompatActivity {
         // Envoie des coordonnées pour infos fragment
         // Création d'une instance d'infoFragment
         InfoFragment fragmentInfos = new InfoFragment();
-        // Création d'un objet bundle pour y stocker les coordonées
-        Bundle bundleInfos = new Bundle();
-        bundleInfos.putDouble("latitude", latitude);
-        bundleInfos.putDouble("longitude", longitude);
-        // Passe le bundle en tant qu'argument
-        fragmentInfos.setArguments(bundleInfos);
 
+        Log.d("result1", "ajout fragment infos");
         // Ajout du fragment infos après la map
         getSupportFragmentManager().beginTransaction().add(R.id.resultScan, fragmentInfos).commit();
     }

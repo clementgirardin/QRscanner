@@ -1,6 +1,7 @@
 package com.example.scanner;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,19 @@ public class InfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        Log.d("result2", "Fragment ajouté");
         View view = inflater.inflate(R.layout.fragment_info, container, false);
 
         // Récupération par ID
         telephone = view.findViewById(R.id.telephone);
         localisation = view.findViewById(R.id.localisation);
         btn_envoie = view.findViewById(R.id.btn_envoie);
+
+        // Récupère les paramètres fournis
+        Bundle args = getArguments();
+        assert args != null;
+        latitude = args.getDouble("latitude");
+        longitude = args.getDouble("longitude");
 
 //        // Récupération des arguments passés en paramètre à la création de l'instance d'infosfragment
 //        Bundle bundleInfos = getArguments();
