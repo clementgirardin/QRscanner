@@ -5,23 +5,24 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class resultScanActivity extends AppCompatActivity {
-    double latitude = 0;
-    double longitude = 0
-            ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_scan);
 
+        // Récupération des coordonnées envoyées par l'Intent
+        double latitude = getIntent().getDoubleExtra("latitude", 0.0);
+        double longitude = getIntent().getDoubleExtra("longitude", 0.0);
 
         // Création d'une instance d'infoFragment
         MapsFragment fragmentMap = new MapsFragment();
         // Création d'un objet bundle pour y stocker les coordonées
-        Bundle bundleLoca = new Bundle();
-        bundleLoca.putDouble("latitude", latitude);
-        bundleLoca.putDouble("longitude", longitude);
+        Bundle args = new Bundle();
+        args.putDouble("latitude", latitude);
+        args.putDouble("longitude", longitude);
         // Passe le bundle en tant qu'argument
-        fragmentMap.setArguments(bundleLoca);
+        fragmentMap.setArguments(args);
 
         // Remplace activity main par le fragment map
         getSupportFragmentManager().beginTransaction().replace(R.id.resultScan, fragmentMap).commit();
