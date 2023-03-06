@@ -33,21 +33,23 @@ public class InfoFragment extends Fragment {
         btn_envoie = view.findViewById(R.id.btn_envoie);
 
         // Récupère les paramètres fournis
-//        Bundle args = getArguments();
-//        assert args != null;
-//        latitude = args.getDouble("latitude");
-//        longitude = args.getDouble("longitude");
+        Bundle args = getArguments();
+        assert args != null;
+        latitude = args.getDouble("latitude");
+        longitude = args.getDouble("longitude");
 
-//        // Récupération des arguments passés en paramètre à la création de l'instance d'infosfragment
-//        Bundle bundleInfos = getArguments();
-//
-//        if (bundleInfos != null){
-//            // Récupération des valeurs si arguments n'est pas null
-//            latitude = bundleInfos.getDouble("latitude");
-//            longitude = bundleInfos.getDouble("longitude");
-//        }
-//
-//
+        // Récupération des arguments passés en paramètre à la création de l'instance d'infosfragment
+        Bundle bundleInfos = getArguments();
+
+        if (bundleInfos != null){
+            // Récupération des valeurs si arguments n'est pas null
+            latitude = bundleInfos.getDouble("latitude");
+            longitude = bundleInfos.getDouble("longitude");
+        }
+        // set un nouveau text a localisation avec les coordonées
+        localisation.setText("Localisation : " + latitude + ", " + longitude);
+
+
 //        // Lance l'activité scan_code_qr au clique du bouton
 //        btn_envoie.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -70,10 +72,8 @@ public class InfoFragment extends Fragment {
 //                Toast.makeText(getActivity(), "Message envoyé à " + numTel, Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//
-//        // set un nouveau text a localisation avec les coordonées
-//        localisation.setText("Localisation : " + latitude + ", " + longitude);
 
+        Log.d("result4", "Message envoyé");
         return view;
     }
 }

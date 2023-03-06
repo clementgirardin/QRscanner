@@ -19,27 +19,22 @@ public class resultScanActivity extends AppCompatActivity {
 
 
         //----------------------------------Séparation partie du code----------------------------------------\\
-        // Création d'une instance d'infoFragment
+        // Création instances d'infoFragment et mapFragment
         MapsFragment fragmentMap = new MapsFragment();
+        InfoFragment fragmentInfos = new InfoFragment();
+
         // Création d'un objet bundle pour y stocker les coordonées
         Bundle args = new Bundle();
         args.putDouble("latitude", latitude);
         args.putDouble("longitude", longitude);
-        // Passe le bundle en tant qu'argument
+        // Passe le bundle en tant qu'argument aux deux fragments
         fragmentMap.setArguments(args);
+        fragmentInfos.setArguments(args);
 
         // Remplace activity main par le fragment map
         getSupportFragmentManager().beginTransaction().replace(R.id.resultScan, fragmentMap).commit();
-
-
-        //----------------------------------Séparation partie du code----------------------------------------\\
-        // Envoie des coordonnées pour infos fragment
-        // Création d'une instance d'infoFragment
-        InfoFragment fragmentInfos = new InfoFragment();
-
-        Log.d("result1", "ajout fragment infos");
         // Ajout du fragment infos après la map
         getSupportFragmentManager().beginTransaction().add(R.id.resultScan, fragmentInfos).commit();
-        Log.d("result2", "fragment infos ajouté");
+        Log.d("result1", "fragments ajoutés");
     }
 }
