@@ -40,5 +40,6 @@ public class resultScanActivity extends AppCompatActivity {
         Log.d("result1", "ajout fragment infos");
         // Ajout du fragment infos après la map
         getSupportFragmentManager().beginTransaction().add(R.id.resultScan, fragmentInfos).commit();
+        Log.d("result2", "fragment infos ajouté");
     }
 }
