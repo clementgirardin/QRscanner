@@ -1,6 +1,7 @@
 package com.example.scanner;
 
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
@@ -49,31 +53,33 @@ public class InfoFragment extends Fragment {
         // set un nouveau text a localisation avec les coordonées
         localisation.setText("Localisation : " + latitude + ", " + longitude);
 
-
-//        // Lance l'activité scan_code_qr au clique du bouton
-//        btn_envoie.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String numTel = telephone.getText().toString();
-//                String message = "Localisation: " + latitude + longitude;
-//
-//                // Supprime les espaces du numéro de tel si il y en a
-//                numTel = numTel.replaceAll("\\s+", "");
-//                // Vérifie si le numéro de téléphone est valide
-//                if (!numTel.matches("^\\+?[0-9]{10,13}$")) {
-//                    Toast.makeText(getActivity(), "Numéro de téléphone invalide", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//
-//                SmsManager smsManager = SmsManager.getDefault();
-//                smsManager.sendTextMessage(numTel, null, message, null, null);
-//
-//                // Validation envoie du message
-//                Toast.makeText(getActivity(), "Message envoyé à " + numTel, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
         Log.d("result4", "Message envoyé");
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        // Lance l'activité scan_code_qr au clique du bouton
+        btn_envoie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String numTel = telephone.getText().toString();
+                String message = "Localisation: " + latitude + longitude;
+
+                // Supprime les espaces du numéro de tel si il y en a
+                numTel = numTel.replaceAll("\\s+", "");
+                // Vérifie si le numéro de téléphone est valide
+                if (!numTel.matches("^\\+?[0-9]{10,13}$")) {
+                    Toast.makeText(getActivity(), "Numéro de téléphone invalide", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(numTel, null, message, null, null);
+
+                // Validation envoie du message
+                Toast.makeText(getActivity(), "Message envoyé à " + numTel, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
