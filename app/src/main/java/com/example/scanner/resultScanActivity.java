@@ -12,15 +12,11 @@ public class resultScanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_scan);
 
-        //----------------------------------Séparation partie du code----------------------------------------\\
-        // Récupération des coordonnées envoyées par l'Intent
-        double latitude = getIntent().getDoubleExtra("latitude", 0.0);
-        double longitude = getIntent().getDoubleExtra("longitude", 0.0);
-
 
         //----------------------------------Séparation partie du code----------------------------------------\\
         // Création instances d'infoFragment
-        InfoFragment fragmentInfos = new InfoFragment();
+//        InfoFragment fragmentInfos = new InfoFragment();
+        InfosFragmentPopUp monFragmentPopup = InfosFragmentPopUp.newInstance();
 
         // Création d'un objet bundle pour y stocker les coordonées
         Bundle args = new Bundle();
