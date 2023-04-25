@@ -31,7 +31,6 @@ public class mainFragment extends Fragment {
 
         // Récupération par id
         btn_scan = view.findViewById(R.id.btn_scan);
-        txt_resultat = view.findViewById(R.id.txt_resultat);
 
         // Lance l'activité scan_code_qr au clique du bouton
         btn_scan.setOnClickListener(new View.OnClickListener() {
