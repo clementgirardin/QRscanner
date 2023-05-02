@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.mesEmprunts:
                         // Option 2 sélectionnée
-                        return true;
                     default:
                         return false;
                 }
