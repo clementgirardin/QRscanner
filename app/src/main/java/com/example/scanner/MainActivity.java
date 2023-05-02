@@ -133,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 // Traitez la sélection de l'utilisateur ici
                 switch (item.getItemId()) {
-                    case R.id.liste_materiel:
+                    case R.id.materielEmprunte:
                         // Option 1 sélectionnée
                         return true;
-                    case R.id.emprunts:
+                    case R.id.mesEmprunts:
                         // Option 2 sélectionnée
                         return true;
                     default:

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/ListMateriel"
-        android:title="Liste matériels"
+        android:id="@+id/materielEmprunte"
+        android:title="Matériels en cours d'emprunts"
         android:popupMenuStyle="@style/Menu"
         android:popupTheme="@style/Menu"/>
     <item
-        android:id="@+id/emprunts"
-        android:title="Emprunts" />
+        android:id="@+id/mesEmprunts"
+        android:title="Mes emprunts" />
 </menu>
