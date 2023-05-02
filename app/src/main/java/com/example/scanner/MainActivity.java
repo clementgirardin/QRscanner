@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Lance ConnexionActivity lorsque l'application est lancée
+        Intent intent = new Intent(this, connexion.class);
+        startActivity(intent);
+        finish();
+
         // Récupération par id
         btn_scan = findViewById(R.id.btn_scan);
         menu = findViewById(R.id.menu);
