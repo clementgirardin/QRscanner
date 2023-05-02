@@ -1,8 +1,8 @@
 package com.example.scanner;
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.zxing.Result;
 
@@ -27,12 +27,10 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
     @Override
     public void handleResult(Result result) {
         String scannedText = result.getText();
-        // Pass the scannedText to MainFragment to add to the ListView
-        mainFragment mainFragment = new mainFragment();
-        mainFragment.addItemToListView(scannedText);
-        // Return to MainFragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, mainFragment).addToBackStack(null).commit();
+
+        MainActivity.addItemToListView(scannedText);
+        // Retour à MainActivity
+        onBackPressed();
     }
 
     @Override
