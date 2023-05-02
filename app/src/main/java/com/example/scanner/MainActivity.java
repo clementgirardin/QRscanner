@@ -4,11 +4,13 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         // Récupération par id
         btn_scan = findViewById(R.id.btn_scan);
         menu = findViewById(R.id.menu);
-        // Récupération de la ListView
         listView = findViewById(R.id.liste_materiel);
+
 
         // Création de la liste des codes QR scannés
         codesQrScannes = new ArrayList<>();
@@ -60,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, 1);
                 }
 
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDropdownMenu(v);
             }
         });
     }
@@ -117,4 +125,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void showDropdownMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_deroulant, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Traitez la sélection de l'utilisateur ici
+                switch (item.getItemId()) {
+                    case R.id.liste_materiel:
+                        // Option 1 sélectionnée
+                        return true;
+                    case R.id.emprunts:
+                        // Option 2 sélectionnée
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupMenu.show();
+    }
 }
