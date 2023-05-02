@@ -137,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
                         // Option 1 sélectionnée
                         return true;
                     case R.id.mesEmprunts:
-                        // Option 2 sélectionnée
+                        // Lance l'activité mesEmprunts
+                        Intent intent = new Intent(MainActivity.this, mesEmprunts.class);
+                        startActivityForResult(intent, 1);
                     default:
                         return false;
                 }
