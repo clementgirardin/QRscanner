@@ -1,9 +1,8 @@
 package com.example.scanner;
-
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.zxing.Result;
 
@@ -27,37 +26,14 @@ public class ScanCodeQrActivity extends AppCompatActivity implements ZXingScanne
      */
     @Override
     public void handleResult(Result result) {
-//        MainActivity.txt_resultat.setText(result.getText());
-//        // Retour à la page d'accueil après le scan pour visualiser le résultat
-//        onBackPressed();
-
-
-        // Affichage de la map
-        // Récupération données code QR
-        String resultQRcode = result.getText();
-        // Affichage données récupérées dans la textView
-        mainFragment.txt_resultat.setText(resultQRcode);
-
-        // Vérifie si la chaîne commence par "geo:"
-        if (resultQRcode.startsWith("geo:")) {
-            // Extrait la chaîne de caractère "geo:" renvoyée par le code QR
-            resultQRcode = resultQRcode.substring(4);
-        }
-
-        // Sépare la latitude de la longitude retournés par le code QR
-        String[] localisation = resultQRcode.split(",");
-
-        // Récupération latitude & longitude après la séparation des valeurs
-        double latitude = Double.parseDouble(localisation[0]);
-        double longitude = Double.parseDouble(localisation[1]);
-
-        // Start l'activité et fournis la latitude et longitude en paramètre
-        Intent intent = new Intent(getApplicationContext(), resultScanActivity.class);
-        intent.putExtra("latitude", latitude);
-        intent.putExtra("longitude", longitude);
-        startActivity(intent);
+        String scannedText = result.getText();
+        // Pass the scannedText to MainFragment to add to the ListView
+        mainFragment mainFragment = new mainFragment();
+        mainFragment.addItemToListView(scannedText);
+        // Return to MainFragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, mainFragment).addToBackStack(null).commit();
     }
-
 
     @Override
     protected void onResume() {
