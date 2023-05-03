@@ -23,7 +23,7 @@ public class connexion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
-        // Récupération de l'objet TextView dans la mise en page
+        // Récupération tv d'informations
         infoBadge = findViewById(R.id.infosBadge);
 
         // Vérification que l'appareil supporte la technologie NFC

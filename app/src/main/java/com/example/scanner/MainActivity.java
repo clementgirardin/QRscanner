@@ -28,15 +28,40 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSION = 100;
     private List<String> codesQrScannes;
 
+    // Variable globale pour stocker si l'utilisateur est connecté ou non
+    private boolean isConnected = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        // Lance ConnexionActivity lorsque l'application est lancée
-        Intent intent = new Intent(this, connexion.class);
-        startActivity(intent);
-        finish();
+        // Vérifie si l'utilisateur est connecté ou non
+        if (!isConnected) {
+            // Si l'utilisateur n'est pas connecté, redirection vers connexion.java
+            Intent intent = new Intent(this, connexion.class);
+            startActivity(intent);
+            finish();
+        } else {
+            // Affiche le contenu de la page principale
+            afficherPagePrincipale();
+        }
+    }
+
+    // Méthode appelée après que l'utilisateur se soit connecté
+    private void onConnect() {
+        // Utilisateur connecté
+        isConnected = true;
+        // Afficher le contenu de la page principale
+        setContentView(R.layout.activity_main);
+        // Affiche le contenu de la page principale
+        afficherPagePrincipale();
+    }
+
+
+
+    // Méthode pour afficher le contenu de la page principale
+    private void afficherPagePrincipale() {
+        setContentView(R.layout.activity_main);
 
         // Récupération par id
         btn_scan = findViewById(R.id.btn_scan);
