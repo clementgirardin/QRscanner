@@ -47,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Méthode appelée après que l'utilisateur se soit connecté
-    private void onConnect() {
+    /**
+     * Méthode permettant à l'utilisateur de rester connecté
+     * et d'utiliser l'app
+     */
+    public void onConnect() {
         // Utilisateur connecté
         isConnected = true;
         // Afficher le contenu de la page principale

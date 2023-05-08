@@ -6,6 +6,8 @@ import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ public class connexion extends AppCompatActivity {
     IntentFilter[] intentFiltersArray;
     String[][] techListsArray;
     TextView infoBadge;
+    Button btn_connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class connexion extends AppCompatActivity {
 
         // Récupération tv d'informations
         infoBadge = findViewById(R.id.infosBadge);
+        btn_connect = findViewById(R.id.btn_connect);
 
         // Vérification que l'appareil supporte la technologie NFC
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -38,6 +42,16 @@ public class connexion extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         intentFiltersArray = new IntentFilter[] { intentFilter };
         techListsArray = new String[][] { new String[] { android.nfc.tech.NfcV.class.getName() } };
+
+        btn_connect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Récupération de l'activité MainActivity
+                MainActivity mainActivity = (MainActivity) getApplicationContext();
+                // Appel de la méthode onConnect de MainActivity
+                mainActivity.onConnect();
+            }
+        });
     }
 
     @Override
@@ -73,7 +87,6 @@ public class connexion extends AppCompatActivity {
 
     /**
      * Convertit un tableau de bytes en une chaîne de caractères en format hexadécimal
-     *
      * @param array Le tableau de bytes à convertir
      * @return La chaîne de caractères représentant le tableau de bytes en format hexadécimal
      */
